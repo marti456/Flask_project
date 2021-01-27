@@ -9,7 +9,7 @@ from forum.utils import allowed_file, random_string, stop_logged_users
 
 @app.route('/signin', methods=['GET', 'POST'])
 @stop_logged_users
-def register():
+def signin():
     if request.method == 'GET':
         return render_template('signin.html')
     else:
