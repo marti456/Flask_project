@@ -4,8 +4,13 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
 from forum import app, db
-from forum.modules import User
-from forum.utils import hash_password, random_string
+from forum.models import User
+
+import hashlib
+import string
+import random
+
+from flask import request, flash, redirect
 
 #Не съм сигурен дали това ни трябва тук.
 login_manager = LoginManager()
