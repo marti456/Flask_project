@@ -2,8 +2,6 @@ from flask import Flask
 from flask_socketio import SocketIO
 from flask_sqlalchemy import SQLAlchemy
 
-UPLOAD_FOLDER = 'uploads'
-
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/dev.db'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -13,3 +11,5 @@ socketio = SocketIO(app)
 db = SQLAlchemy(app)
 
 from forum.routes import *
+from forum.templates import *
+
