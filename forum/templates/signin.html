@@ -37,7 +37,7 @@ h1{
   padding: 0;
   margin: 0;
 }
-#myUL li a {
+#myUL li a input {
   border: 1px solid #ddd;
   margin-top: -1px; /* Prevent double borders */
   background-color: #f6f6f6;
@@ -47,7 +47,7 @@ h1{
   color: black;
   display: block
 }
-#myUL li a:hover:not(.header) {
+#myUL li a input:hover:not(.header) {
   background-color: #eee;
 }
 </style>
@@ -135,16 +135,22 @@ h1{
 <body style="font-family:Comic;">
   <hr style="margin-top: 0;margin-bottom: 0">
   <div class="topnav">
-    <a class="active" href="/">Начало</a>
+    <a href="/">Начало</a>
     <a href="/login_html">Вход</a>
-    <a href="/signin_html">Регистрация</a>
+    <a class="active" href="/signin_html">Регистрация</a>
+ 
   </div>
   <hr style="margin-top: 0%;">
   <body style="font-family:Comic;">
-  <input type="text" id="myInput" oninput="asd()" placeholder="Търси теми" title="Търсачка">
-  <ul id="myUL">
-    <li class="li"><a href="par.html">Теми</a></li>
-</ul>
+  
+    <form action="/signin" method="post" enctype="multipart/form-data">
+      <label for="username">Име:</label><br>
+      <input type="text" name="username"><br>
+      <label for="password">Парола:</label><br>
+      <input type="text" name="password"><br>
+      <input type="submit" value="Submit">
+    </form>
+
 <script type="text/javascript">
 
 </script>

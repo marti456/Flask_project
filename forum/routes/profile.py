@@ -5,11 +5,12 @@ from flask import render_template, request, flash, redirect, jsonify
 
 from forum import app, db
 from forum.models import User
-from forum.utils import allowed_file, random_string, stop_logged_users
+from forum.utils import random_string, stop_logged_users
+
 
 @app.route('/signin', methods=['GET', 'POST'])
 @stop_logged_users
-def signin():
+def sign():
     if request.method == 'GET':
         return render_template('signin.html')
     else:
@@ -29,17 +30,18 @@ def signin():
             return redirect(request.url)
 
 @app.route('/login', methods=['GET', 'POST'])
-@stop_logged_users
 def login():
     if request.method == 'GET':
         return render_template('login.html')
     else:
-        data = json.loads(request.data.decode('ascii'))
-        username = data['username']
-        password = data['password']
+        info = json.loads(request.data)
+        username = info.get('username', 'guest')
+        password = info.get('password', '') 
+        user = User.objects(name=username,
+                        password=password).first()
+        if user:
+            login_user(user)
+            return jsonify(user.to_json())
+        else:
+            return jsonify({"status": 401, "reason": "Username or Password Error"})
 
-        user = User.query.filter_by(username=username).first()
-        if not user or not user.verify_password(password):
-            return jsonify({'token': None})
-        token = user.generate_token()
-        return jsonify({'token': token.decode('ascii')})
