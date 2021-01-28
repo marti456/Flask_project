@@ -13,3 +13,9 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
+if __name__ == '__main__':
+    db.create_all()
+
+    app.run(debug = True)
+
+from forum.routes import *

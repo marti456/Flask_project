@@ -2,8 +2,7 @@ from datetime import datetime
 from itsdangerous import (TimedJSONWebSignatureSerializer as Serializer, BadSignature, SignatureExpired)
 
 from forum import app, db
-from forum.utils import hash_password
-
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
