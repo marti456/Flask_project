@@ -1,1 +1,1 @@
-from forum.routes import auth
+from forum.routes import auth, topics

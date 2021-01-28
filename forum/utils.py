@@ -10,7 +10,7 @@ from itsdangerous import (TimedJSONWebSignatureSerializer as Serializer, BadSign
 
 from forum import app
 
-#Това за сега не ни трябва
+
 def require_login(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
@@ -21,7 +21,7 @@ def require_login(func):
         return func(*args, **kwargs)
     return wrapper
 
-#Това за сега не ни трябва
+
 def stop_logged_users(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
