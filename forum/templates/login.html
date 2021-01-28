@@ -7,6 +7,16 @@
   <meta name="description" content="website description" />
   <meta name="keywords" content="website keywords, website keywords" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <script type="text/javascript">
+    /*function set_cookies(){
+      var username = document.getElementsByName("username");
+      var password = document.getElementsByName("password");
+
+      document.cookie = "username="+username;
+      document.cookie = "password="+password;
+    }*/
+  </script>
 </head>
 
 <body>
@@ -33,14 +43,16 @@
       
       <div id="content" class="form-style-6">
         <h1 style="background-color:#4d94ff;">Влез</h1>
+        {% if message %}
+        <h2 style="color: red">   {{message}}</h2>
+        {% endif %}
         <form method="post" enctype="multipart/form-data">
           <input type="text" name="username" placeholder="Име"><br>
-          <input type="text" name="password" placeholder="Парола"><br>
+          <input type="password" name="password" placeholder="Парола"><br>
           <input type="submit" value="Влез" style="background-color:#4d94ff;">
         </form>
 
-    {{username}}</br>
-    {{password}}
+
       </div>
     </div>
     <div id="content_footer"></div>

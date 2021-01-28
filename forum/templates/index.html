@@ -32,7 +32,24 @@
     <div id="site_content">
       
       <div id="content">
-        
+        <table>
+          <thead>
+            <tr>
+              <th>Заглавие</th>
+              <th>Описание</th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            {% for topic in topics %}
+               <tr>
+                  <td>{{ topic.title }}</td>
+                  <td>{{ topic.description }}</td>
+               </tr>
+            {% endfor %}
+    
+          </tbody>
+        </table>
       </div>
     </div>
     <div id="content_footer"></div>

@@ -33,15 +33,16 @@
       
       <div id="content" class="form-style-6">
         <h1 style="background-color:#4d94ff;">Регистрирай се</h1>
+        {% if message %}
+        <h2 style="color: red">   {{message}}</h2>
+        {% endif %}
         <form method="post" enctype="multipart/form-data">
           <input type="text" name="username" placeholder="Име"><br>
-          <input type="text" name="password" placeholder="Парола"><br>
+          <input type="password" name="password" placeholder="Парола"><br>
+          <input type="password" name="password2" placeholder="Потвърдете паролата"><br>
           <input type="submit" value="Предай" style="background-color:#4d94ff;">
         </form>
 
-
-    {{username}}</br>
-    {{password}}
       </div>
     </div>
     <div id="content_footer"></div>

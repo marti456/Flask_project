@@ -7,14 +7,6 @@
   <meta name="description" content="website description" />
   <meta name="keywords" content="website keywords, website keywords" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
-  <style type="text/css">
-  .topic_button{
-    position: relative;
-    top: 0%;
-    right: -100%;
-  }
-  </style>
 </head>
 
 <body>
@@ -30,39 +22,27 @@
       <div id="menubar">
         <ul id="menu">
           <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
-          <li class="selected"><a class="active" href="/logged">Начало</a></li>
-          <li><a href="/topic">Добави тема</a></li>
+          <li><a class="active" href="/logged">Начало</a></li>
+          <li class="selected"><a href="/topic">Добави тема</a></li>
           <li><a href="/">Изход</a></li>
-
+       
         </ul>
       </div>
+    </div>
     <div id="site_content">
-        
-
-      <div id="content" class="form-style-6" style="margin: 0; padding: 0;">
-        
-
-        <table style="width: 180%;">
-          <thead>
-            <tr>
-              <th>Заглавие</th>
-              <th>Описание</th>
-            </tr>
-          </thead>
-  
-          <tbody>
-            {% for topic in topics %}
-               <tr>
-                  <td>{{ topic.title }}</td>
-                  <td>{{ topic.description }}</td>
-               </tr>
-            {% endfor %}
-    
-          </tbody>
-        </table>
+      
+      <div id="content" class="form-style-6">
+        <h1 style="background-color:#4d94ff;">Данни за темата</h1>
+        <form method="post" enctype="multipart/form-data">
+          <input type="text" name="title" placeholder="Заглавие"><br>
+          <input type="text" name="description" placeholder="Описание"><br>
+          <input type="submit" value="Създай" style="background-color:#4d94ff;">
+        </form>
 
       </div>
     </div>
+    <div id="content_footer"></div>
 
+  </div>
 </body>
 </html>

@@ -157,7 +157,6 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
 #site_content
 { width: 837px;
   overflow: hidden;
-  margin: 0 auto 0 auto;
   padding: 20px 24px 20px 37px;
   background: #FFF url(content.png) repeat-y;} 
 
@@ -189,15 +188,6 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
   width: 595px;
   padding: 0;}
 
-#content ul
-{ margin: 2px 0 22px 0px;}
-
-#content ul li
-{ list-style-type: none;
-  background: url(bullet.png) no-repeat;
-  margin: 0 0 6px 0; 
-  padding: 0 0 4px 25px;
-  line-height: 1.5em;}
 
 #footer
 { width: 878px;
@@ -277,25 +267,33 @@ ul#menu li a:hover, ul#menu li.selected a, ul#menu li.selected a:hover
   margin: 0 0 20px 0;}
   
 table
-{ margin: 10px 0 30px 0;}
+{ 
+  margin-right: auto;
+  margin-left: auto;
+  right: 0;
+  left: 0;
+  width: 140%;
+  font-size:150%
+}
 
 table tr th, table tr td
-{ background: #3B3B3B;
+{ background: #004662;
   color: #FFF;
   padding: 7px 4px;
   text-align: left;}
   
 table tr td
-{ background: #F0EFE2;
+{ background: #EAFAFF;
   color: #47433F;
-  border-top: 1px solid #FFF;}
+  border-top: 1px solid #FFF;
+}
 
 .form-style-6{
   font: 95% Arial, Helvetica, sans-serif;
-  max-width: 400px;
+  max-width: 450px;
   margin: 10px auto;
   padding: 16px;
-  background: #F7F7F7;
+
 }
 .form-style-6 h1{
   background: #43D1AF;
@@ -307,6 +305,7 @@ table tr td
   margin: -16px -16px 16px -16px;
 }
 .form-style-6 input[type="text"],
+.form-style-6 input[type="password"],
 .form-style-6 input[type="date"],
 .form-style-6 input[type="datetime"],
 .form-style-6 input[type="email"],
@@ -333,7 +332,25 @@ table tr td
   color: #555;
   font: 95% Arial, Helvetica, sans-serif;
 }
+.form-style-6 button{
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  width: 35%;
+  background: #fff;
+  margin-bottom: 4%;
+  border: 1px solid #ccc;
+  padding: 3%;
+  color: #555;
+  font: 95% Arial, Helvetica, sans-serif;
+}
 .form-style-6 input[type="text"]:focus,
+.form-style-6 input[type="password"]:focus,
 .form-style-6 input[type="date"]:focus,
 .form-style-6 input[type="datetime"]:focus,
 .form-style-6 input[type="email"]:focus,
@@ -341,6 +358,7 @@ table tr td
 .form-style-6 input[type="search"]:focus,
 .form-style-6 input[type="time"]:focus,
 .form-style-6 input[type="url"]:focus,
+.form-style-6 button:focus,
 .form-style-6 textarea:focus,
 .form-style-6 select:focus
 {
@@ -366,4 +384,11 @@ table tr td
 .form-style-6 input[type="submit"]:hover,
 .form-style-6 input[type="button"]:hover{
   background: #2EBC99;
+}
+
+.topic_button{
+  position: absolute;
+  top: 50%;
+  right: 5%;
+
 }

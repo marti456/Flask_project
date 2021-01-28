@@ -6,9 +6,7 @@ from forum import app, db
 from forum.models import Topic
 from forum.utils import random_string, require_login
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+from flask import request, flash, redirect
 
 @require_login
 @app.route('/topic', methods=['GET', 'POST'])
@@ -23,8 +21,12 @@ def topic():
             topic = Topic(title=title, description=description)
             db.session.add(topic)
             db.session.commit()
-            return redirect('/')
+            return redirect('/logged')
         except Exception as e:
             flash('Error: {}'.format(e))
-            return redirect('/')
+            return redirect('/logged')
 
+
+@app.route('/logged', methods=['GET', 'POST'])
+def logged():
+    return render_template('logged.html', topics=Topic.query.all())

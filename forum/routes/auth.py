@@ -4,7 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
 from forum import app, db
-from forum.models import User
+from forum.models import User, Topic
 
 import hashlib
 import string
@@ -25,7 +25,7 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', topics=Topic.query.all())
 
 
 
@@ -34,8 +34,15 @@ def sign():
     if request.method == 'GET':
         return render_template('signin.html')
     else:
+        if request.form['password'] != request.form['password2']:
+            return render_template('signin.html', message="Паролите не съвпадат!")
+
         username = request.form['username']
         password = hashlib.sha256(request.form['password'].encode('utf-8')).hexdigest()
+
+        check_user = User.query.filter_by(username=username).first()
+        if check_user:
+            return render_template('signin.html', message="Вече съществува такъв потребител!")
 
         try:
             user = User(username=username, password=password)
@@ -59,6 +66,6 @@ def login():
         user = User.query.filter_by(username=username, password=password).first()
         if user:
             login_user(user)
-            return render_template('logged.html')
+            return render_template('logged.html', topics=Topic.query.all())
 
-        return render_template('login.html', username=username, password=password)
+        return render_template('login.html', message="Имате грешен потребител или парола!")
